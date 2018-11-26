@@ -2,6 +2,8 @@
 
 A workshop app for rewriting _Redux_ services into _React_'s context API.
 
+Used boilerplate: https://github.com/oreqizer/reactizer
+
 ## Setup
 
 * `yarn`
