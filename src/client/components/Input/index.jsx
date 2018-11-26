@@ -67,9 +67,10 @@ export default class Input extends React.PureComponent<Props, State> {
 
   handleKeyPress = (ev: SyntheticKeyboardEvent<HTMLInputElement>) => {
     const { onSubmit } = this.props;
+    const { value } = this.state;
 
-    if (ev.key === "Enter" && ev.target.value !== "") {
-      onSubmit(ev.target.value);
+    if (ev.key === "Enter" && value !== "") {
+      onSubmit(value);
       this.setState({ value: "" });
     }
   };

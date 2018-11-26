@@ -2,7 +2,7 @@
 import * as R from "ramda";
 import type { Dispatch } from "redux";
 
-import type { Message } from "client/records/Message";
+import type { Message, Messages } from "client/records/Message";
 import * as api from "./api";
 
 const CREATE_MESSAGE = "CREATE_MESSAGE";
@@ -34,7 +34,7 @@ const initialState: State = {
   messageOrder: [],
 };
 
-function chat(state: State = initialState, action: Action) {
+function chat(state: State = initialState, action: Action): State {
   switch (action.type) {
     case CREATE_MESSAGE:
       return {
@@ -99,6 +99,7 @@ export const createMessage = (text: string) => (
     const responses = getResponseCount();
     Array(responses)
       .fill(null)
+      // $FlowExpected: thunk
       .forEach(() => dispatch(getMessage()));
   });
 };

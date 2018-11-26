@@ -4,14 +4,16 @@ import * as ReactDOM from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { createStore } from "redux";
+import type { Store } from "redux";
 import { Provider } from "react-redux";
 
 import chat from "client/services/chat/redux";
+import type { State, Action } from "client/services/chat/redux";
 import Root from "client/scenes/Root";
 import Html from "./Html";
 import { assets } from "../config";
 
-const store = createStore(chat);
+const store: Store<State, Action> = createStore(chat);
 
 function markup(url: string) {
   const context = {};

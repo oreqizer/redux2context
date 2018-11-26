@@ -2,7 +2,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import type { Connector } from "react-redux";
+// import type { Connector } from "react-redux";
 
 import Input from "client/components/Input";
 import MessageBox from "client/components/MessageBox";
@@ -17,7 +17,7 @@ const Container = styled.div`
 
 type Props = {|
   messages: Message[],
-  createMessage: typeof chat.createMessage,
+  createMessage: (text: string) => void,
 |};
 
 const ChatRedux = ({ messages, createMessage }: Props) => (
@@ -31,7 +31,8 @@ const ChatRedux = ({ messages, createMessage }: Props) => (
   </Container>
 );
 
-const connector: Connector<Props, {}> = connect(
+// $FlowExpected: the new libdefs are fed up
+const connector = connect(
   state => ({
     messages: chat.getMessages(state),
   }),
