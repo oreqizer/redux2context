@@ -1,7 +1,7 @@
 {
-  "name": "reactizer",
+  "name": "redux2context",
   "version": "0.9.2",
-  "description": "The ultimate react boilerplate!",
+  "description": "A demo chat app.",
   "main": "dist/server.js",
   "scripts": {
     "start": "rimraf dist && gulp && run-p devserver webpack:dev",
@@ -23,14 +23,7 @@
     "example:app": "yarn bundle && copyfiles -u 2 'dist/static/**/*' docs/app && copyfiles -u 5 docs/app/pages/main/en/index.html docs/app",
     "example:storybook": "build-storybook -o docs/storybook"
   },
-  "bin": {
-    "reactizer": "./bin/reactizer.js"
-  },
-  "keywords": [
-    "react",
-    "webpack",
-    "boilerplate"
-  ],
+  "keywords": [],
   "author": "oreqizer",
   "license": "MIT",
   "dependencies": {

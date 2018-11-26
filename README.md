@@ -1,17 +1,8 @@
-# Reactizer
+# Redux 2 context
 
-The best **React** boilerplate!
+A workshop app for rewriting _Redux_ services into _React_'s context API.
 
-## Docs
+## Setup
 
-Here https://oreqizer.github.io/reactizer/
-
-## Features
-
-- [x] **Static** and **dynamic** SSR
-- [x] Internationalization
-- [x] Theming
-- [x] Tests via **Jest** and **Enzyme**
-- [x] Storybook
-- [x] Flow
-- [x] ESLint
+* `yarn`
+* `yarn start`
