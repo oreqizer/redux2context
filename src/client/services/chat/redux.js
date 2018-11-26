@@ -77,7 +77,7 @@ const getMessage = () => (dispatch: Dispatch<Action>, getState: GetState<State>)
   });
 };
 
-const getResponseCount = () => Math.floor(Math.random() * 5);
+const getResponseCount = () => Math.floor(Math.random() * 4);
 
 export const createMessage = (text: string) => (
   dispatch: Dispatch<Action>,
