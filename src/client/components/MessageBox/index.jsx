@@ -8,7 +8,7 @@ const Container = styled.section`
   padding: 0 20px;
   margin: 5px;
   background: ${({ incoming }) => (incoming ? "#CCC" : "crimson")};
-  height: 40px;
+  min-height: 40px;
   line-height: 40px;
   color: ${({ incoming }) => (incoming ? "black" : "white")};
 `;
