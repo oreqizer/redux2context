@@ -1,6 +1,5 @@
 // @flow strict
 import v4 from "uuid/v4";
-import * as R from "ramda";
 
 import type { Message } from "client/records/Message";
 
