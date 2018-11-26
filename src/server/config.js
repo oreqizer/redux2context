@@ -22,16 +22,6 @@ function getAssets(): Assets {
 
 export const port = Number(process.env.PORT !== undefined ? Number(process.env.PORT) : 3000);
 
-export type Route = {
-  url: string,
-  filepath: string,
-};
-
-export const routes: Route[] = [
-  {
-    url: "/",
-    filepath: "",
-  },
-];
+export const routes: string[] = ["/", "/redux", "/context"];
 
 export const assets = getAssets();

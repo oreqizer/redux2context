@@ -1,14 +1,12 @@
 // @flow strict
 import * as React from "react";
-import styled, { createGlobalStyle, ThemeConsumer } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import { Switch, Route } from "react-router-dom";
 import { hot } from "react-hot-loader";
 
-import Text from "../components/Text";
-import { Consumer as IntlConsumer } from "../services/intl/context";
-import { themeDefault } from "../records/Theme";
-import type { ThemeProps } from "../records/Theme";
-
-const URL = "https://oreqizer.github.io/reactizer/app/pages";
+import Welcome from "client/scenes/Welcome";
+import ChatRedux from "client/scenes/ChatRedux";
+import ChatContext from "client/scenes/ChatContext";
 
 const Global = createGlobalStyle`
   body {
@@ -20,58 +18,15 @@ const Global = createGlobalStyle`
   }
 `;
 
-const H1 = styled.h1`
-  margin-top: 0;
-`;
-
-const Div = styled.div`
-  box-sizing: border-box;
-  background: ${({ theme }: ThemeProps) => theme.colors.primary};
-  padding: 20px;
-`;
-
-const A = styled.a`
-  box-sizing: border-box;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 10px;
-  margin: 5px;
-  border: 1px solid black;
-  border-radius: 3px;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-Div.defaultProps = {
-  theme: themeDefault,
-};
-
 const Root = () => (
-  <ThemeConsumer>
-    {theme => (
-      <IntlConsumer>
-        {intl => (
-          <Div>
-            <Global />
-            <H1>{`${theme.name} "${intl.locale}"`}</H1>
-            <Text t={__("Do you even lift?")} />
-            <A href={`${URL}/${theme.id === "main" ? "alt" : "main"}/${intl.locale}`}>
-              <Text t={__("Switch theme")} />
-            </A>
-            <A href={`${URL}/${theme.id}/${intl.locale === "en" ? "de" : "en"}`}>
-              <Text t={__("Switch locale")} />
-            </A>
-          </Div>
-        )}
-      </IntlConsumer>
-    )}
-  </ThemeConsumer>
+  <>
+    <Global />
+    <Switch>
+      <Route path="/" exact render={() => <Welcome />} />
+      <Route path="/redux" exact render={() => <ChatRedux />} />
+      <Route path="/context" exact render={() => <ChatContext />} />
+    </Switch>
+  </>
 );
 
 // eslint-disable-next-line no-undef

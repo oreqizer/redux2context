@@ -2,30 +2,21 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from "react";
 import { hydrate } from "react-dom";
-import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 import Root from "./scenes/Root";
-import type { Theme } from "./records/Theme";
-import type { IntlRaw } from "./records/Intl";
-import { Provider as IntlProvider } from "./services/intl/context";
-import InitIntl from "./components/InitIntl";
+import store from "./services/store";
 
 const app = document.getElementById("react");
 
-const theme: Theme = window.__THEME__;
-const intlRaw: IntlRaw = window.__INTL__;
-
 if (app) {
   hydrate(
-    <ThemeProvider theme={theme}>
-      <InitIntl intl={intlRaw}>
-        {intl => (
-          <IntlProvider value={intl}>
-            <Root />
-          </IntlProvider>
-        )}
-      </InitIntl>
-    </ThemeProvider>,
+    <BrowserRouter>
+      <Provider store={store}>
+        <Root />
+      </Provider>
+    </BrowserRouter>,
     app,
   );
 }
