@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 
 import Root from "./scenes/Root";
 import store from "./services/store";
+import { Provider as ChatProvider } from "./services/chat/context";
+import InitChat from "./components/InitChat";
 
 const app = document.getElementById("react");
 
@@ -14,7 +16,13 @@ if (app) {
   hydrate(
     <BrowserRouter>
       <Provider store={store}>
-        <Root />
+        <InitChat>
+          {chat => (
+            <ChatProvider value={chat}>
+              <Root />
+            </ChatProvider>
+          )}
+        </InitChat>
       </Provider>
     </BrowserRouter>,
     app,
